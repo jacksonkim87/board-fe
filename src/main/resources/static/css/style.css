@@ -1,0 +1,127 @@
+* {
+	font-size:12px;
+}
+
+a {
+	color:#000;
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+
+#container {
+	margin:auto;
+	width:800px;
+	border:1px #ccc solid;
+	min-height:600px;
+	position:relative;
+}
+
+.header{
+	padding:10px 50px 10px 0;
+	background:#e7e7e7;
+	border-bottom:1px #ccc solid;
+}
+
+.menu {
+	margin-left:10px;
+}
+
+.login {
+	position:absolute;
+	top:10px;
+	right:50px;
+}
+
+.content {
+	margin:20px 0;
+}
+
+.footer {
+	position:relative;
+	bottom:0px;
+	padding:10px 0;
+	border-top:1px #ccc solid;
+	text-align:center;
+	font-size:11px;
+	color:#333;
+	width:100%;
+	background:#e7e7e7;
+}
+
+table {
+	margin:auto;
+	border-collapse:collapse;
+	width:760px;
+}
+
+input[type="text"]{
+	width:650px;
+	font-size:12px;
+}
+
+textarea{
+	width:650px;
+	height:300px;
+	font-size:12px;
+}
+
+ul {
+	list-style:none;
+	margin:0;
+}
+
+ul li {
+	display:inline;
+	padding:0 5px;
+}
+
+ol li {
+	padding:5px;
+}
+
+th {
+	background:#e7e7e7;
+}
+th, td {
+	border:1px #ccc solid;
+	padding:5px;
+}
+
+.action {
+	text-align:right;
+	position:relative;
+	bottom:0px;
+	right:50px;
+}
+
+.pager {
+	padding: 20px 0;
+	margin-left:100px;
+}
+
+.pager a {
+	padding:2px 3px;
+}
+
+
+/* 위 ROW에 가깝게 붙은 ROW */
+.btn_sml{display:inline-block;padding-right:3px;font-size:11px;line-height:21px;color:#444;letter-spacing:-1px;text-decoration:none !important;white-space:nowrap;word-spacing:-1px}
+input.btn_big,.btn_big{display:block;height:26px;padding:1px 9px 0 12px;border:0;background:url(http://static.naver.com/groupware/2010/bg_btn_default.gif) no-repeat;font-size:12px;line-height:26px;color:#444;text-decoration:none !important;white-space:nowrap;word-spacing:-1px}
+table.Nnavi{height:13px;margin:0 auto;border-collapse:collapse}
+table.Nnavi td{padding:0;border-right:1px solid #ddd}
+table.Nnavi td.pgRR{border-right:0}
+table.Nnavi a{display:block;padding:2px 8px 0 7px;font-size:12px;font-family:;font-weight:bold;color:#333;text-decoration:none}
+table.Nnavi a:hover{background-color:#F7F7F7}
+table.Nnavi .pgLL a,table.Nnavi .pgL a,table.Nnavi .pgR a,table.Nnavi .pgRR a{font-weight:normal}
+table.Nnavi .pgLL a:hover,table.Nnavi .pgL a:hover,table.Nnavi .pgR a:hover,table.Nnavi .pgRR a:hover{background-color:#fff}
+table.Nnavi .pgLL img,table.Nnavi .pgL img,table.Nnavi .pgR img,table.Nnavi .pgRR img{margin-bottom:1px;border:0}
+table.Nnavi .pgLL img,table.Nnavi .pgL img{margin:0 5px 2px 0}
+table.Nnavi .pgRR img,table.Nnavi .pgR img{margin:0 0 2px 5px}
+table.Nnavi .on,table.Nnavi .on a,table.Nnavi .on a:visited{color:#FF8400}
+*html body table.Nnavi a{width:1em}
+table.Nnavi .pgLL a,table.Nnavi .pgL a,table.Nnavi .pgR a,table.Nnavi .pgRR a{width:auto}
+.ui-datepicker-trigger{vertical-align:middle}
+
+

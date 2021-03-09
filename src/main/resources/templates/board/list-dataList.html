@@ -1,0 +1,60 @@
+
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="dataList">
+	<div >
+		<span>&nbsp;&nbsp;&nbsp;총 게시글 :<span th:text="${pagerInfo.totalCount}"></span></span>
+	</div>
+	<div align="right">
+		<span><a href="rest/list" target="new">json</a></span>
+	</div>
+	<table class="list">		 
+		<tr>
+			<th>번호</th>
+			<th>제목</th>			
+			<th>작성자</th>
+			<th>작성일시</th>
+		</tr>
+	 
+		
+			<tr th:each="board : ${boardList}">
+				<td width="30" th:text="${board.num}"></td>				 	
+				<td width="500"><a th:href="@{view(num=${board.num})}" th:text="${board.title}"></a></td>			
+				<td width="80" th:text="${board.writeName}">test</td>
+				 <td width="80" th:text="${#temporals.format(board.writeDate, 'yyyy-MM-dd HH:mm:ss')}"></td> 
+						    
+			</tr>
+		
+	   
+	 </table>
+	 
+	<div class="row">
+  		<div ></div>
+  		<div class="pager"><ul class="paging"></ul></div>
+  		<div></div>
+  		
+  	</div>
+  	
+  	
+  	
+ <script th:inline="javascript">
+
+ jQuery(function() {
+		jQuery(".paging").pagination({
+		        items: /*[[${pagerInfo.totalCount}]]*/,
+		        currentPage : /*[[${pagerInfo.page}]]*/,
+		        itemsOnPage: /*[[${pagerInfo.pageSize}]]*/,
+		        cssStyle: 'light-theme',
+		        onPageClick: function(currentPage, e){
+		        	goPage(currentPage);
+		        }
+		    });
+	});
+
+
+</script>
+</div>	 
+
+		 
+	
+		
+	 
+

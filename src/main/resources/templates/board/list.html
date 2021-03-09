@@ -1,0 +1,68 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="board/header"></head>
+
+<body>
+<link href="css/simplePagination.css" rel="stylesheet"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="js/ajax_util.js"></script> 
+<script src="js/jquery.simplePagination.js"></script>
+
+<div id="container">
+
+
+	<div class="header">
+		<div class="menu">
+			<ul>
+				<li>
+					<a href="list">게시판</a>
+				</li>
+			 
+			</ul>
+		</div>
+		<div class="login">
+			 <ul>
+				<li>
+					<a href="logout">로그아웃</a>
+				</li>
+			 
+			</ul>
+		</div>
+	</div>
+	
+	<script th:inline="javascript">
+	
+	 
+	
+	function boardDataList(result){	
+		//console.log(result);
+		jQuery('#listData').html(result);	
+	}
+	
+	
+	function goPage(currentPage){
+		document.frmPageList.page.value=currentPage ;	
+		sendFormAjax('ajaxList','frmPageList', 'boardDataList', 'html');
+	}
+	
+	</script>
+
+	<div class="content">		
+			<div id="listData">
+				<div  th:replace="board/list-dataList"></div>	
+			</div>
+			<form name="frmPageList"  id="frmPageList"   method="post">
+				<input type="hidden" name="page" id="page" value=""/>
+			</form>    
+		
+		<div class="action">			
+			<a href="write">게시물 작성</a>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

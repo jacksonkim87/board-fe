@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="board/header"></head>
+<body>
+ <script th:inline="javascript">
+	function del() {
+		if (confirm("정말로 삭제 하시겠습니까?")) {
+			var num = /*[[${board.num}]]*/;
+			location.href ="delete?num="+num ;
+		}
+	}
+
+</script>
+
+<div class="content">
+	<table>
+		<tr>
+			<td width="80">제목</td>
+			<td th:text="${board.title}"></td>
+		</tr>
+
+		<tr>
+			<td width="80">작성자</td>
+			<td th:text="${board.writeName}"></td>
+		</tr>
+		<tr>
+			<td width="80">작성일시</td>
+			<td th:text="${board.writeDate}"></td>
+		</tr>
+		<tr>
+			<td width="80">수정자</td>
+			<td th:text="${board.modifyName}"></td>
+		</tr>
+		<tr>
+			<td width="80">수정일시</td>
+			<td th:text="${board.modifyDate}"></td>
+		</tr>
+
+		<tr>
+			<td width="80">내용</td>
+			<td th:utext="${#strings.replace(board.contents,T(System).getProperty('line.separator'),'&lt;br /&gt;')}"></td>
+		</tr>
+	</table>
+
+	<div class="action">
+		<ul>
+			<li><a href="list">목록</a></li>
+			<li><a th:href="@{modifyForm(num=${board.num})}">수정</a></li>
+			<li><a href="javascript:del();">삭제</a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

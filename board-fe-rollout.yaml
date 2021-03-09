@@ -1,0 +1,89 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: board-fe
+  namespace: front
+  labels:
+    app: board-fe
+    
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: board-fe
+
+  template:
+    metadata:
+      labels:
+        app: board-fe
+          
+    spec:
+      containers:
+      - name: board-fe
+        image: jacksonkim/board-fe
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 8001
+           
+  minReadySeconds: 30
+  revisionHistoryLimit: 3
+  strategy:
+  
+    blueGreen:
+      previewService: board-fe-svc-preview
+      activeService: board-fe-svc-active
+      #autoPromotionEnabled: true
+      autoPromotionEnabled: false
+      previewReplicaCount: 1
+      scaleDownDelaySeconds: 60 
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: board-fe-svc-active
+spec:
+  selector:
+    app: board-fe
+  
+  #ports:
+  #- protocol: TCP
+  #  port: 8081
+  #  targetPort: http
+
+  #type: NodePort
+  #ports:
+  #- protocol: TCP
+  #  port: 8001
+  #  targetPort: http
+  #  nodePort: 30081
+
+  type: LoadBalancer
+  ports:
+  - port: 8083
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: board-fe-svc-preview
+spec:
+  selector:
+    app: board-fe
+  
+  #ports:
+  #- protocol: TCP
+  #  port: 8082
+  #  targetPort: http
+
+  #type: NodePort
+  #ports:
+  #- protocol: TCP
+  #  port: 8001
+  #  targetPort: http
+  #  nodePort: 30082
+
+  type: LoadBalancer
+  ports:
+  - port: 8084

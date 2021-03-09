@@ -1,0 +1,12 @@
+#############
+### 공통
+##############
+
+
+
+spring:
+  application:
+    name: edin-fe
+
+  profiles:
+    active: local

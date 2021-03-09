@@ -1,0 +1,14 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name:  board-fe-ingress
+  namespace: front
+spec:
+  virtualhost:
+    fqdn: local.board-fe.demo.com
+  routes:
+    - conditions:
+      - prefix: /
+      services:
+        - name: board-fe-svc
+          port: 8080

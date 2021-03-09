@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-fe
+  namespace: front
+  labels:
+    app: board-fe
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: board-fe
+  template:
+    metadata:
+      labels:
+        app: board-fe
+        
+    spec:
+      containers:
+      - name: board-fe
+        image: board-fe
+        imagePullPolicy: Never
+        ports:
+        - name: http
+          containerPort: 8080
+        
+        

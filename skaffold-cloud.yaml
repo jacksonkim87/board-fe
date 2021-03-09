@@ -1,0 +1,63 @@
+apiVersion: skaffold/v2beta11
+kind: Config
+
+build:
+  tagPolicy:
+    envTemplate:
+      template: "{{.VER}}"
+  artifacts:    
+    - image: board-fe
+      jib:
+        args:
+          - -DskipTests
+
+profiles:  
+  - name: hub
+    build:
+      local:
+        push: true
+      artifacts:
+        - image: jacksonkim/board-fe
+          jib:
+            args:
+              - -DskipTests
+              - "-Djib.container.environment=SPRING_PROFILES_ACTIVE=cloud"
+    #deploy:
+    #  kubectl:
+    #    manifests:
+    #      - k8s/cloud/board-fe-deploy-hub.yaml
+    #      - k8s/cloud/board-fe-svc.yaml
+
+  - name: ecr
+    build:
+      local:
+        push: true
+      artifacts:
+        - image: 723184425190.dkr.ecr.ap-northeast-2.amazonaws.com/board-fe
+          jib:
+            args:
+              - -DskipTests
+              - "-Djib.container.environment=SPRING_PROFILES_ACTIVE=cloud"
+    deploy:
+      kubectl:
+        manifests:
+          - k8s/cloud/board-fe-deploy-ecr.yaml
+          - k8s/cloud/board-fe-svc.yaml
+
+  - name: gcr
+    build:
+      local:
+        push: true
+      artifacts:
+        - image: gcr.io/durable-will-304110/board-fe
+          jib:
+            args:
+              - -DskipTests
+              - "-Djib.container.environment=SPRING_PROFILES_ACTIVE=cloud"
+    deploy:
+      kubectl:
+        manifests:
+          - k8s/cloud/board-fe-deploy-gcr.yaml
+          - k8s/cloud/board-fe-svc.yaml
+
+  

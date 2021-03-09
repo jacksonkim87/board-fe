@@ -1,0 +1,20 @@
+##############
+### local
+##############
+
+server:
+ port: 8002
+
+
+api:
+  board: 
+    url: http://localhost:8001/api/boards
+
+      
+
+logging:
+  level:  
+    com.example.boardfe: DEBUG 
+
+
+    

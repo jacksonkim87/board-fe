@@ -1,0 +1,20 @@
+##############
+### kind
+##############
+
+server:
+ port: 8080
+
+api:
+  board: 
+    url: http://board-api-svc.api.svc.cluster.local:8080/api/boards
+
+
+      
+
+logging:
+  level:  
+    com.devops.boardfe: info 
+
+
+    

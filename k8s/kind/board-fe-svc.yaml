@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: board-fe-svc
+  namespace: front
+spec:
+  selector:
+    app: board-fe  
+  ports:
+  - protocol: TCP
+    port: 8080 
+    targetPort: http
+    # nodePort: 32180
+  type: ClusterIP
